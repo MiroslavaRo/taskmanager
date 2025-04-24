@@ -164,7 +164,7 @@ const updateTask = async (req, res) => {
 
 
 // @desc Delete a task(Admin only)
-// @route DELETE/api/tasks /:id
+// @route DELETE/api/tasks/:id
 //@access Private(Admin)
 const deleteTask = async (req, res) => {
     try {
@@ -179,7 +179,7 @@ const deleteTask = async (req, res) => {
 };
 
 // @desc Update task status
-// @route PUT/api/tasks /: id/status
+// @route PUT/api/tasks/: id/status
 // @access Private
 const updateTaskStatus = async (req, res) => {
     try {

@@ -1,6 +1,5 @@
 
-export const BASE_URL = import.meta.env.API_BACKEND_URL;
-console.log(BASE_URL);
+export const BASE_URL = `${import.meta.env.API_BACKEND_URL}`;
 
 
 //utils/apiPaths.js
@@ -24,7 +23,7 @@ export const API_PATHS = {
         GET_ALL_TASKS: "/api/tasks", // Get all tasks (Admin: all, User: only assign 
         GET_TASK_BY_ID: (taskId) => `/api/tasks/${taskId}`, // Get task by ID 
         CREATE_TASK: "/api/tasks", // Create a new task (Admin only)
-        UPDATE_TASK: (taskId) => `/api/tasks / ${taskId}`, // Update task details
+        UPDATE_TASK: (taskId) => `/api/tasks/${taskId}`, // Update task details
         DELETE_TASK: (taskId) => `/api/tasks/${taskId}`, // Delete a task (Admin only)
 
         UPDATE_TASK_STATUS: (taskId) => `/api/tasks/${taskId}/status`, // Update task status 
