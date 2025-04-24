@@ -68,7 +68,7 @@ const Dashboard = () => {
           label="Pending Tasks"
           value={addThousandsSeparator(dashboardData?.charts?.taskDistribution?.Pending || 0
           )}
-          color="bg-violet-500"
+          color="bg-green-500"
         />
         <InfoCard
           label="In Progress Tasks"
