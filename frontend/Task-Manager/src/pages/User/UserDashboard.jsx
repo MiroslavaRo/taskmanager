@@ -19,8 +19,8 @@ const UserDashboard = () => {
 
   const navigate = useNavigate();
   const [dashboardData, setDashboardData] = useState(null);
-  const [pieChartData, setPieChartData] = useState([]);
-  const [barChartData, setBarChartData] = useState([]);
+  // const [pieChartData, setPieChartData] = useState([]);
+  // const [barChartData, setBarChartData] = useState([]);
 
   const getDashboardData = async () => {
     try {

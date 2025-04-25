@@ -22,7 +22,7 @@ const ViewTaskDetails = () => {
     };
   }
 
-  // get Task info by ID
+  // get Task info by Id
   const getTaskDetailsByID = async () => {
     try {
       const res = await axiosInstance.get(
@@ -40,7 +40,7 @@ const ViewTaskDetails = () => {
   };
   // handle todo check
   const updateTodoChecklist = async (index) => {
-    const todoChecklist = [...task?.todoChecklist];
+    const todoChecklist = [...task.todoChecklist];
     const taskId = id;
 
     if (todoChecklist && todoChecklist[index]) {
