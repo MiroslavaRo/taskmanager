@@ -6,6 +6,7 @@ import { API_PATHS } from "../../utils/apiPaths";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import TaskStatusTabs from "../../components/TaskStatusTabs";
 import TaskCard from "../../components/cards/TaskCard";
+import toast from "react-hot-toast";
 
 const ManageTasks = () => {
 
@@ -45,6 +46,24 @@ const ManageTasks = () => {
 
   // download task report
   const handleDownloadReport = async () => {
+    try {
+      const response = await axiosInstance.get(API_PATHS.REPORTS.EXPORT_TASKS, {
+        responseType: "blob",
+      });
+
+      // Create a URL for the blob
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "task_details.xlsx");
+      document.body.appendChild(link);
+      link.click();
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading tasks report:", error);
+      toast.error("Failed to download tasks report. Please try again.");
+    }
 
   };
 
@@ -65,12 +84,12 @@ const ManageTasks = () => {
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-xl font-medium">My Tasks</h2>
 
-          {/* <button className="flex lg:hidden download-btn"
+          <button className="flex lg:hidden download-btn"
             onClick={handleDownloadReport}>
 
             <LuFileSpreadsheet className="text-lg" />
             Download Report
-          </button> */}
+          </button>
 
         </div>
 
@@ -83,11 +102,11 @@ const ManageTasks = () => {
                 setActiveTab={setFilterStatus}
               />
 
-              {/* <button className="hidden lg:flex download-btn"
+              <button className="hidden lg:flex download-btn"
                 onClick={handleDownloadReport}
               ><LuFileSpreadsheet className="text-lg" />
                 Download Report
-              </button> */}
+              </button>
             </div>
           )}
       </div>
