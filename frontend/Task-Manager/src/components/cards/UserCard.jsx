@@ -9,7 +9,7 @@ const UserCard = ({ userInfo }) => {
                     <img
                         src={userInfo?.profileImageUrl}
                         alt={"Avatar"}
-                        className="w-12 h-12 rounded-full border-2 ■border-white"
+                        className="w-12 h-12  object-cover rounded-full border-2 ■border-white"
                     />
 
                     <div>
@@ -55,7 +55,7 @@ const StatCard = ({ label, count, status }) => {
     }
     return (
         <div
-            className={`flex-1 text -[10px] font-medium ${getStatusTagColor()} px-4 py-0.5 rounded `}>
+            className={`flex-1 text-[10px] font-medium ${getStatusTagColor()} px-4 py-0.5 rounded `}>
             <span className='text-[12px] font-semibold'>{count}
                 <br />
                 {label}

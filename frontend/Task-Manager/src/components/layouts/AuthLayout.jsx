@@ -1,5 +1,4 @@
 import React from "react";
-// import UI_IMG from "../../assets/images/";
 
 const AuthLayout = ({ children }) => {
   return (
@@ -9,7 +8,6 @@ const AuthLayout = ({ children }) => {
         {children}
       </div>
       <div className="hidden md:flex w-[40vw] h-screen items-center justify-center bg-blue-300 bg-cover bg-no-repeat bg-center overflow-hidden p-8">
-        {/* <img src={UI_IMG} alt="" className="w-64 lg:w-[90%]" /> */}
       </div>
     </div>
   );

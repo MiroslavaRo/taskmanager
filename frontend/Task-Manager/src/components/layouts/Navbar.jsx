@@ -21,7 +21,7 @@ const Navbar = ({ activeMenu }) => {
 
             <h2 className="text-lg font-medium Otext-black">Task Manager</h2>
             {openSideMenu && (
-                <div className="fixed top-[61px] -ml-4 ■bg-white">
+                <div className="fixed top-[61px]-ml-4 ■bg-white">
                     <SideMenu activeMenu={activeMenu} />
                 </div>
             )

@@ -76,7 +76,7 @@ const SelectUsers = ({ selectedUsers, setSelectedUsers }) => {
                     <div className="flex items-center gap-4 p-3 border-b border-gray-200"
                         key={user._id} >
                         <img src={user.profileImageUrl} alt={user.name}
-                            className='w-10 h-10 rounded-full  object-cover' />
+                            className='w-10 h-10 rounded-full object-cover' />
                         <div className="flex-1">
                             <p className="font-medium text-gray-800 dark:text-white">{user.name}</p>
                         </div>
