@@ -11,6 +11,8 @@ import SelectDropDown from "../../components/inputs/SelectDropDown";
 import SelectUsers from "../../components/inputs/SelectUsers";
 import CustomModal from "../../components/CustomModal";
 import DeleteAlert from "../../components/DeleteAlert";
+import ToDoListInput from "../../components/inputs/ToDoListInput";
+import AttachmentsInput from "../../components/inputs/AttachmentsInput";
 
 
 const CreateTask = () => {
@@ -62,7 +64,7 @@ const CreateTask = () => {
         completed: false,
       }));
 
-      const res = await axiosInstance.post(
+      await axiosInstance.post(
         API_PATHS.TASKS.CREATE_TASK, {
         ...taskData,
         dueDate: new Date(taskData.dueDate).toISOString(),
@@ -136,12 +138,17 @@ const CreateTask = () => {
       return;
     }
 
-    if (!taskData.dueDate.trim()) {
+    if (!taskData.dueDate) {
       setError("Due date is required");
       return;
     }
     if (taskData.assignedTo?.length === 0) {
       setError("Task not assigned to any member");
+      return;
+    }
+
+    if (taskData.todoChecklist?.length === 0) {
+      setError("Add at least one task");
       return;
     }
 
@@ -163,7 +170,7 @@ const CreateTask = () => {
         const taskInfo = res.data;
         setCurrentTask(taskInfo);
 
-        setTaskData((prevState) => ({
+        setTaskData(() => ({
           title: taskInfo.title,
           description: taskInfo.description,
           priority: taskInfo.priority,
@@ -288,6 +295,30 @@ const CreateTask = () => {
                   handleValueChange("assignedTo", value);
                 }}
               />
+            </div>
+
+            <div className="col-span-12 md:col-span-3 mt-2">
+              <label className="text-xs font-medium text-slate-600"> To-Do Cheklist
+              </label>
+              <ToDoListInput
+                todoList={taskData?.todoChecklist}
+                setTodoList={(value) => {
+                  handleValueChange("todoChecklist", value)
+                }}
+              >
+              </ToDoListInput>
+            </div>
+
+            <div className="col-span-12 md:col-span-3 mt-2">
+              <label className="text-xs font-medium text-slate-600"> Attachments
+              </label>
+              <AttachmentsInput
+                attachments={taskData?.attachments}
+                setAttachments={(value) => {
+                  handleValueChange("attachments", value)
+                }}
+              >
+              </AttachmentsInput>
             </div>
 
 
