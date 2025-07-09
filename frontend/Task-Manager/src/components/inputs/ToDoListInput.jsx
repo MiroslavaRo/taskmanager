@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { HiOutlineTrash, HiMiniPlus } from 'react-icons/hi2';
+import { ReactSortable } from "react-sortablejs";
 
 const ToDoListInput = ({ todoList, setTodoList }) => {
 
@@ -23,22 +24,32 @@ const ToDoListInput = ({ todoList, setTodoList }) => {
 
     return (
         <div>
-            {todoList.map((item, index) =>
-            (
-                <div className="flex justify-between bg-gray-50 border border-gray-100 px-3 py-2 rounded mb-2 mt-2"
-                    key={item}>
-                    <p className="text-sm text-black">
-                        <span className="text-sm text-gray-400 font-semibold mr-2">
-                            {index < 9 ? `0${index + 1}` : index + 1}
-                        </span>
-                        {item}
-                    </p>
-                    <button className="cursor-pointer"
-                        onClick={() => { handleDeleteOption(index) }}>
-                        <HiOutlineTrash className=" text-lg text-red-500" />
-                    </button>
-                </div>
-            ))}
+            <ReactSortable
+                filter=".addImageButtonContainer"
+                dragClass="sortableDrag"
+                list={todoList}
+                setList={setTodoList}
+                animation="200"
+                easing="ease-out"
+            >
+                {todoList.map((item, index) =>
+                (
+                    <div className="draggableItem flex justify-between bg-gray-50 border border-gray-100 px-3 py-2 rounded mb-2 mt-2"
+
+                        key={item}>
+                        <p className="text-sm text-black">
+                            <span className="text-sm text-gray-400 font-semibold mr-2">
+                                {index < 9 ? `0${index + 1}` : index + 1}
+                            </span>
+                            {item}
+                        </p>
+                        <button className="cursor-pointer"
+                            onClick={() => { handleDeleteOption(index) }}>
+                            <HiOutlineTrash className=" text-lg text-red-500" />
+                        </button>
+                    </div>
+                ))}
+            </ReactSortable>
 
             <div className="flex items-center gap-5 mt-4">
                 <input
